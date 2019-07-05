@@ -1,0 +1,8 @@
+[Unit]
+After=network-online.target
+
+[Service]
+ExecStart=/home/philip/scripts/smbmount.sh
+
+[Install]
+WantedBy=multi-user.target

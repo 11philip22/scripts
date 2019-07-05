@@ -1,0 +1,9 @@
+[Unit]
+Description=mail the pictures taken on failed unlock
+
+[Service]
+ExecStart=/home/philip/scripts/sendpicture
+User=root
+
+[Install]
+WantedBy=multi-user.target

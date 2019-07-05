@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+sxhkd &
+exec bspwm
+
+compton &
+lxpolkit &
+nm-applet &
+usbguard-applet-qt &
+stack-client &
+/usr/lib/notification-daemon-1.0/notification-daemon &
+feh --bg-fill /home/philip/.wallpaper.jpg
+/home/philip/.config/polybar/launch.sh
+

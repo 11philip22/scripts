@@ -1,0 +1,8 @@
+[Unit]
+After=local-fs.target
+
+[Service]
+ExecStart=/home/philip/scripts/backup-sync.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+#!/bin/bash
+#writen by philip woldhek
+
+mail=$(cat /home/philip/scripts/nicetryfbi.txt | grep email | awk '{print $2}')
+picturelocation=/home/philip/failedunlock
+hostname=$(cat /proc/sys/kernel/hostname)
+lastpicture=$(ls -Art $picturelocation | tail -n 1)
+
+while inotifywait -m  /home/philip/failedunlock/*; do
+    mail -s "unauthorized login" -a $picturelocation/$lastpicture $mail <<< "This person tried to login to $hostname"
+done
