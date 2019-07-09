@@ -34,7 +34,7 @@ if len(sys.argv) < 2:  # checks if there are arguments
     print("Usage is vpn-hole start/stop")
     exit(1)
 
-if sys.argv[1] == "start": 
+if sys.argv[1] == "start":
     try:
         ip = os.popen("cat /home/philip/scripts/nicetryfbi.txt | \
                     grep wan | awk '{print $2}'").read()
