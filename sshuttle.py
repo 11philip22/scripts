@@ -2,6 +2,8 @@
 
 import os
 import sys
+import traceback
+
 
 if len(sys.argv) < 2:
     print("Usage is vpn-hole start/stop")
@@ -15,7 +17,8 @@ if sys.argv[1] == "start":
         os.system("sshuttle --dns -x {0}  -r philip@{0} \
                  0/0 --python=python3 -D".format(ip))
         exit(0)
-    except:
+    except Exception:
+        traceback.print_exc()
         print("could not start sshuttle")
         exit(1)
 
@@ -23,6 +26,7 @@ if sys.argv[1] == "stop":
     try:
         os.system("kill $(pgrep sshuttle) > /dev/null 2>&1")
         exit(0)
-    except:
+    except Exception:
+        traceback.print_exc()
         print("sshuttle is not running")
         exit(1)
