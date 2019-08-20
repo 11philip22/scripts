@@ -43,6 +43,11 @@ alias raid='cd /srv/sto1'
 alias 4tb='cd /srv/sto2'
 alias nano='vim'
 alias mktar='tar -czvf'
+alias sto1='cd /srv/sto1'
+alias sto2='cd /srv/sto2'
+alias sto3='cd /srv/sto4'
+alias sto4='cd /srv/sto5'
+alias deluxe='cd /srv/sto2/scripts'
 
 ##########functions##########
 
