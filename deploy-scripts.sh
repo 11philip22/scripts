@@ -6,7 +6,7 @@ ln -s ${script_root}/sshuttle.py /usr/local/bin/vpn
 ln -s ${script_root}/autogit.sh /usr/local/bin/autogit
 
 if [[ $1 = "clean" ]]; then
-    if [ "$EUID" -ne 0 ]; then
+    if [[ "$EUID" -ne 0 ]]; then
         echo "Please run as root"
         exit
     fi
