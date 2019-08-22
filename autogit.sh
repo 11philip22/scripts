@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
+
+if [[ $# -eq 0 ]]; then
+    msg=`date '+%F_%H:%M:%S'`
+else
+    msg=$@
+fi
+
 git add .
-now=`date '+%F_%H:%M:%S'`
-git commit -m "${now}"
+git commit -m "${msg}"
 git push origin master
