@@ -5,10 +5,25 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 ZSH_THEME="junkfood"
-
 plugins=(git extract)
-
 source $ZSH/oh-my-zsh.sh
+
+##########functions######################
+
+function headset() {
+    if echo -e "info" | bluetoothctl | grep Missing; then
+        echo -e "power on" | bluetoothctl
+        sleep 1
+        echo -e "connect A0:E6:F8:18:DD:F5" | bluetoothctl
+    else
+        echo -e "power off" | bluetoothctl
+    fi
+}
+
+export headset
+
+# kubectl autocompletion #########################################
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 ##########aliases##########
 
@@ -48,41 +63,3 @@ alias sto2='cd /srv/sto2'
 alias sto3='cd /srv/sto4'
 alias sto4='cd /srv/sto5'
 alias deluxe='cd /srv/sto2/scripts'
-
-##########functions##########
-
-function wifimon() {
- if ifconfig | grep -q wlp4s0mon
-  then
-   sudo airmon-ng check kill &
-   sleep 1 &
-   sudo airmon-ng stop wlp4s0mon
-  else
-   sudo airmon-ng check kill &
-   sleep 1 &
-   sudo airmon-ng start wlp4s0
- fi
-}
-
-export wifimon
-
-function changemac() {
- sudo ifconfig wlp4s0 down
- sudo macchanger -r wlp4s0
- sudo ifconfig wlp4s0 up
-}
-
-export changemac
-
-function headset() {
- if echo -e "info" | bluetoothctl | grep Missing
-  then
-   echo -e "power on" | bluetoothctl
-   sleep 1
-   echo -e "connect A0:E6:F8:18:DD:F5" | bluetoothctl
-  else
-   echo -e "power off" | bluetoothctl
- fi
-}
-
-export headset
