@@ -64,4 +64,5 @@ alias deluxe='cd /srv/sto2/scripts'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias liah="ls -liah"
+alias liah='ls -liah'
+alias pull='git pull origin master'
