@@ -16,7 +16,7 @@ elif [[ $1 = "install" ]]; then
     ln -s ${script_root}/sshuttle.py /usr/local/bin/vpn
     ln -s ${script_root}/autogit.sh /usr/local/bin/autogit
     ln -s ${script_root}/kpndisplay.sh /usr/local/bin/kpndisplay
-    
+
 else
     echo "Usage: sudo ./deploy-scripts.sh install/clean"
 fi
