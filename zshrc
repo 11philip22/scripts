@@ -1,5 +1,4 @@
 #written by Philip Woldhek
-
 export ZSH="/home/philip/.oh-my-zsh"
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -9,7 +8,6 @@ plugins=(git extract)
 source $ZSH/oh-my-zsh.sh
 
 ##########functions######################
-
 function headset() {
     if echo -e "info" | bluetoothctl | grep Missing; then
         echo -e "power on" | bluetoothctl
@@ -26,7 +24,6 @@ export headset
 if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 ##########aliases##########
-
 alias agenda='gcalcli calm'
 alias todo='gcalcli agenda'
 alias Ro='sudo pacman -Rscn $(pacman -Qtdq)'
@@ -67,5 +64,3 @@ alias l='ls -CF'
 alias liah='ls -liah'
 alias pull='git pull origin master'
 alias code='codium'
-alias ssh-kpn='ssh m1006.mgt.gen.local -l woldh500'
-alias ssh-jenkins='ssh m1006.mgt.gen.local -l woldh500 -t "ssh slnc7r1016.mgt.gen.local"'
