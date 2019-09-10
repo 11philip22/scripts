@@ -21,7 +21,10 @@ function headset() {
 export headset
 
 # kubectl autocompletion #########################################
-if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+if [ -f /usr/bin/kubectl ]; then
+    source <(kubectl completion zsh);
+fi
 
 ##########aliases##########
 alias agenda='gcalcli calm'
