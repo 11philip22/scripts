@@ -15,7 +15,7 @@ username=philip
 apt update
 apt install -y vscodium ranger zsh git neofetch tmux subversion rxvt-unicode python3-pip ncmpccp mpd xfonts-terminus \
 chromium curl
-apt remove -y pidgin sgt-launcher sgt-puzzles gnome-sudoku gnome-mines xfburn onboard mousepad
+apt remove -y pidgin sgt-launcher sgt-puzzles gnome-sudoku gnome-mines xfburn onboard mousepad remmina
 apt autoremove
 
 # set wallpaper
