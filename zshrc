@@ -7,6 +7,8 @@ ZSH_THEME="junkfood"
 plugins=(git extract)
 source $ZSH/oh-my-zsh.sh
 
+PATH=$PATH:~/.local/bin
+
 ##########functions######################
 function headset() {
     if echo -e "info" | bluetoothctl | grep Missing; then
