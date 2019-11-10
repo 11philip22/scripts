@@ -9,6 +9,11 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:~/.local/bin
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    bindkey  "^[[1~"	beginning-of-line
+    bindkey  "^[[4~"	end-of-line
+fi
+
 ##########functions######################
 function headset() {
     if echo -e "info" | bluetoothctl | grep Missing; then
