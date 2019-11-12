@@ -3,7 +3,7 @@ export ZSH="/home/philip/.oh-my-zsh"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-ZSH_THEME="junkfood"
+ZSH_THEME="philipstheme"
 plugins=(git extract)
 source $ZSH/oh-my-zsh.sh
 

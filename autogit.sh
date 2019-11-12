@@ -2,7 +2,7 @@
 
 
 if [[ $# -eq 0 ]]; then
-    msg=`date '+%F_%H:%M:%S'`
+    msg=$(date '+%F_%H:%M:%S')
 else
     msg=$@
 fi
