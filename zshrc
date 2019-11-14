@@ -1,4 +1,4 @@
-#written by Philip Woldhek
+# written by Philip Woldhek
 export ZSH="/home/philip/.oh-my-zsh"
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -7,7 +7,15 @@ ZSH_THEME="philipstheme"
 plugins=(git extract)
 source $ZSH/oh-my-zsh.sh
 
-##########functions######################
+PATH=$PATH:~/.local/bin
+
+########## ssh compatible keybinds ########################################
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    bindkey  "^[[1~"	beginning-of-line
+    bindkey  "^[[4~"	end-of-line
+fi
+
+########## functions ######################################################
 function headset() {
     if echo -e "info" | bluetoothctl | grep Missing; then
         echo -e "power on" | bluetoothctl
@@ -20,13 +28,13 @@ function headset() {
 
 export headset
 
-# kubectl autocompletion #########################################
+########## kubectl autocompletion #########################################
 
 if [ -f /usr/bin/kubectl ]; then
     source <(kubectl completion zsh);
 fi
 
-##########aliases##########
+########## aliases ########################################################
 alias agenda='gcalcli calm'
 alias todo='gcalcli agenda'
 alias Ro='sudo pacman -Rscn $(pacman -Qtdq)'
