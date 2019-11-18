@@ -1,21 +1,30 @@
 #!/usr/bin/env bash
 
+# if [[ "$EUID" -ne 0 ]]; then
+#     echo "Please run as root"
+#     exit
+# fi
 
-if [[ "$EUID" -ne 0 ]]; then
-    echo "Please run as root"
-    exit
+install_dir="$HOME/.local/bin"
+
+if [[ ! ":$PATH:" == *":${install_dir}:"* ]]; then
+    echo "${install_dir} Is not in your PATH. Exiting"
+    exit 1
 fi
 
-
 if [[ $1 = "clean" ]]; then
-    rm /usr/local/bin/vpn
-    rm /usr/local/bin/autogit
+    rm "${install_dir}"/vpn
+    rm "${install_dir}"/autogit
+    rm "${install_dir}"/kpndisplay
+    rm "${install_dir}"/fix_xubuntu_slim
 
 elif [[ $1 = "install" ]]; then
     script_root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-    ln -s ${script_root}/sshuttle.py /usr/local/bin/vpn
-    ln -s ${script_root}/autogit.sh /usr/local/bin/autogit
-    ln -s ${script_root}/kpndisplay.sh /usr/local/bin/kpndisplay
+    
+    ln -s "${script_root}"/sshuttle.py "${install_dir}"/vpn
+    ln -s "${script_root}"/autogit.sh "${install_dir}"/autogit
+    ln -s "${script_root}"/kpndisplay.sh "${install_dir}"/kpndisplay
+    ln -s "${script_root}"/fix_xubuntu_slim.sh "${install_dir}"/fix_xubuntu_slim
 
 else
     echo "Usage: sudo ./deploy-scripts.sh install/clean"

@@ -1,13 +1,16 @@
 # written by Philip Woldhek
-export ZSH="/home/philip/.oh-my-zsh"
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+export PATH=$PATH:~/.local/bin
+export GOPATH=$HOME/Devel/go
+export PATH=$PATH:$(go env GOPATH)/bin
+
+export ZSH="/home/philip/.oh-my-zsh"
 ZSH_THEME="philipstheme"
 plugins=(git extract)
 source $ZSH/oh-my-zsh.sh
-
-PATH=$PATH:~/.local/bin
 
 ########## ssh compatible keybinds ########################################
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
@@ -77,3 +80,4 @@ alias l='ls -CF'
 alias liah='ls -liah'
 alias pull='git pull origin master'
 alias code='codium'
+alias pip='pip3'
