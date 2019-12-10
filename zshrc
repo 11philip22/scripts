@@ -29,6 +29,44 @@ function headset() {
     fi
 }
 
+function kpndisplay() {
+    if [ $HOST = "Philip-T490" ]; then
+        xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal \
+               --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+        xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 576x1440 --rotate normal \
+               --output DP1 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+    fi
+}
+
+function solodisplay() {
+    if [ $HOST = "Philip-T490" ]; then
+        xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal \
+               --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+    elif [ $HOST = "chaos" ]; then
+        xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
+	           --output DP1 --off --output DP2 --off --output HDMI1 --off --output HDMI2 --off --output VIRTUAL1 --off 
+    fi
+}
+
+function bigscreen(){
+	if [ $HOST = "chaos" ]; then
+        xrandr --output eDP1 --primary --mode 1920x1080 --pos 320x1440 \
+               --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 \
+               --off --output HDMI2 --mode 2560x1440 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+        sleep 1
+        xrandr --output eDP1 --off --output DP1 --off --output DP2 --off --output HDMI1 \
+               --off --output HDMI2 --mode 2560x1440 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+        sleep 1
+        xrandr --output eDP1 --primary --mode 1920x1080 --pos 320x1440 \
+               --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 \
+               --off --output HDMI2 --mode 2560x1440 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+        feh --bg-scale pics/wallpaper\ slideshow/2560x1440/space.jpg
+    fi
+}
+
+export bigscreen
+export kpndisplay
+export solodisplay
 export headset
 
 ########## kubectl autocompletion #########################################
