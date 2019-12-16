@@ -1,5 +1,4 @@
 #! /usr/bin/zsh
-
 # written by Philip Woldhek
 
 export VISUAL=vim
