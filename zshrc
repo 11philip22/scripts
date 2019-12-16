@@ -5,8 +5,11 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 export PATH=$PATH:~/.local/bin
-export GOPATH=$HOME/Devel/go
-export PATH=$PATH:$(go env GOPATH)/bin
+
+if [ -x "$(command -v go)" ]; then
+    export GOPATH=$HOME/Devel/go
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
 
 export ZSH="/home/philip/.oh-my-zsh"
 ZSH_THEME="philipstheme"
