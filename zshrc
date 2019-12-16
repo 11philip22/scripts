@@ -29,6 +29,30 @@ function headset() {
     fi
 }
 
+export headset
+
+
+function read_env() {
+    if builtin cd "$@"; then
+        local env="$PWD/.env"
+        if [ -f "$env" ]; then
+            if [ -z "$CURRENT_ENV" ]
+                builtin source "$env"
+                export CURRENT_ENV="$env"
+            elif [ ! "$CURRENT_ENV" = "$env" ]; then
+                if [ "$(type -t deactivate)" = "function" ]; then
+                    deactivate
+                fi
+                builtin source "$env"
+                export CURRENT_ENV="$env"
+            fi
+        fi
+    fi
+}
+
+alias cd='read_env'
+
+
 function kpndisplay() {
     if [ $HOST = "Philip-T490" ]; then
         xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal \
@@ -37,6 +61,9 @@ function kpndisplay() {
                --output DP1 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
     fi
 }
+
+export kpndisplay
+
 
 function solodisplay() {
     if [ $HOST = "Philip-T490" ]; then
@@ -47,6 +74,9 @@ function solodisplay() {
 	           --output DP1 --off --output DP2 --off --output HDMI1 --off --output HDMI2 --off --output VIRTUAL1 --off 
     fi
 }
+
+export solodisplay
+
 
 function bigscreen(){
 	if [ $HOST = "chaos" ]; then
@@ -65,12 +95,8 @@ function bigscreen(){
 }
 
 export bigscreen
-export kpndisplay
-export solodisplay
-export headset
 
 ########## kubectl autocompletion #########################################
-
 if [ -f /usr/bin/kubectl ]; then
     source <(kubectl completion zsh);
 fi
