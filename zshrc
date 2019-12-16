@@ -54,6 +54,21 @@ function read_env() {
 alias cd='read_env'
 
 
+function autogit() {
+    if [[ $# -eq 0 ]]; then
+        msg=$(date '+%F_%H:%M:%S')
+    else
+        msg=$@
+    fi
+
+    git add .
+    git commit -m "${msg}"
+    git push origin master
+}
+
+export autogit
+
+
 function kpndisplay() {
     if [ $HOST = "Philip-T490" ]; then
         xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal \
