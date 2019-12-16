@@ -1,3 +1,5 @@
+#! /usr/bin/zsh
+
 # written by Philip Woldhek
 
 export VISUAL=vim
@@ -36,7 +38,7 @@ function read_env() {
     if builtin cd "$@"; then
         local env="$PWD/.env"
         if [ -f "$env" ]; then
-            if [ -z "$CURRENT_ENV" ]
+            if [ -z "$CURRENT_ENV" ]; then
                 builtin source "$env"
                 export CURRENT_ENV="$env"
             elif [ ! "$CURRENT_ENV" = "$env" ]; then
