@@ -38,7 +38,7 @@ export headset
 
 function read_env() {
     if builtin cd "$@"; then
-        local env="$PWD/.env"
+        local env="$PWD/.zenv"
         if [ -f "$env" ]; then
             if [ -z "$CURRENT_ENV" ]; then
                 builtin source "$env"
