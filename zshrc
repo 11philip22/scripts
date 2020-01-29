@@ -42,7 +42,7 @@ export headset
 
 function read_env() {
     if builtin cd "$@"; then
-        local env="$PWD/.env"
+        local env="$PWD/.zenv"
         if [ -f "$env" ]; then
             if [ -z "$CURRENT_ENV" ]; then
                 builtin source "$env"
@@ -155,7 +155,7 @@ alias sto2='cd /srv/sto2'
 alias sto3='cd /srv/sto3'
 alias sto4='cd /srv/sto4'
 alias devel='cd /home/philip/devel'
-alias deluxe='cd /srv/sto4/scripts'
+alias deluxe='cd /home/philip/devel/deluxe'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
