@@ -16,13 +16,17 @@ ZSH_THEME="philipstheme"
 plugins=(git extract)
 source $ZSH/oh-my-zsh.sh
 
-########## ssh compatible keybinds ########################################
+# ssh compatible keybinds
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     bindkey  "^[[1~"	beginning-of-line
     bindkey  "^[[4~"	end-of-line
 fi
 
-########## functions ######################################################
+# kubectl autocompletion
+if [ -f /usr/bin/kubectl ]; then
+    source <(kubectl completion zsh);
+fi
+
 function headset() {
     if echo -e "info" | bluetoothctl | grep Missing; then
         echo -e "power on" | bluetoothctl
@@ -114,11 +118,6 @@ function bigscreen(){
 }
 
 export bigscreen
-
-########## kubectl autocompletion #########################################
-if [ -f /usr/bin/kubectl ]; then
-    source <(kubectl completion zsh);
-fi
 
 ########## aliases ########################################################
 alias agenda='gcalcli calm'
