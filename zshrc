@@ -7,7 +7,7 @@ export EDITOR="$VISUAL"
 export PATH=$PATH:~/.local/bin
 
 if [ -x "$(command -v go)" ]; then
-    export GOPATH=$HOME/Devel/go
+    export GOPATH=$HOME/go
     export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
