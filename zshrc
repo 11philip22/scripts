@@ -40,27 +40,6 @@ function headset() {
 export headset
 
 
-function read_env() {
-    if builtin cd "$@"; then
-        local env="$PWD/.zenv"
-        if [ -f "$env" ]; then
-            if [ -z "$CURRENT_ENV" ]; then
-                builtin source "$env"
-                export CURRENT_ENV="$env"
-            elif [ ! "$CURRENT_ENV" = "$env" ]; then
-                if [ "$(type -t deactivate)" = "function" ]; then
-                    deactivate
-                fi
-                builtin source "$env"
-                export CURRENT_ENV="$env"
-            fi
-        fi
-    fi
-}
-
-alias cd='read_env'
-
-
 function autogit() {
     if [[ $# -eq 0 ]]; then
         msg=$(date '+%F_%H:%M:%S')
